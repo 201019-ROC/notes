@@ -1,0 +1,40 @@
+Why Java - 
+	- Platform independent - WORA due to JVM
+	- Java is a mature language/supported Oracle and as a result has a lot of documentation
+	- Java is an OOP language
+		- Java is multi paradigm language
+	- Java is compiled language and as a result it provides you with compile time error checking
+	- Java is a strictly typed language, every variable needs to be declared with a type
+		- While we can reassign the value of the variable we can't redeclare it
+	- Java has automatic memory management
+		- There is no need for us to manually allocate and deallocate memory
+		- The garbage collector does it for us.
+
+JDK/JRE/JVM
+	- JDK: Java Development Kit
+		- Contains the JVM and the JRE
+		- Contains the compiler (javac) and other tools for development
+		- Provide an environment to develop and execute a Java program
+	- JRE: Java Runtime Environment
+		- Includes core libraries of Java 
+		- Includes the JVM
+		- All that's needed to RUN an application
+	- JVM: Java Virtual Machine
+		- Takes the compiled code and executes it starting from the main method
+	- Compilation process
+		- Highlevel Java code (.java) => Compilation step (javac) => Bytecode (intermediary language) (.class) => Interpreted by the JVM
+Data types
+	- primitives: simple data that is stored on the Stack
+	- Wrapper classes/Wrappers: Wraps around the primitive type to be used as an object (Autoboxing/Autounboxing), also includes utility methods
+	- String: Stored in the String pool/ Sequence/array of characters.
+		- String are immutable - you can't change them. 
+	- Class: Blueprint for creating an object - States and Behaviors
+		- States are represented by the fields/ variables held by the class
+		- Behaviors are represented by the methods - Block of reusable code 
+			- Each method should focus on doing one specific task. 
+		- Constructors are special methods called when an object is instantiated
+			- A default no-args constructor is provided if none is defined
+			- Animal a = new Animal();
+				- a is actually storing the memory address of the animal that was just instantiated
+			- int i = 5;
+ 
