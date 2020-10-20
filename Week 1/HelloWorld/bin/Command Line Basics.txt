@@ -1,0 +1,18 @@
+echo: print a line of text/can be used to print environment variables
+cd: change directory (.. , . , ~ , /) 
+mkdir: make directories
+rm: remove files or directories
+cp: copy files and directories
+mv: move (rename) files
+ls: list directory contents
+cat: concatenate and write files
+echo: print output of aonther command to stdout
+pwd: Prints current working directory
+man: manual to find in depth info about a command.
+
+text editors: vim/nano
+
+Absolute path: points to a location in the file system regardless of the current working directory, from root directory
+Relative path: points to a location in the file system based on the current directory
+
+Cheatsheet with additional details and flags: http://cheat.sh/
