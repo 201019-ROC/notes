@@ -1,0 +1,16 @@
+Git
+	- Version Control Tool to manage source code, it can save snapshot of a project on one or more branching path.
+		- Repository: files, folders, objects and the branches that represent a project which managed with a .git folder
+		- Working directory: Currently active project files and folders
+		- Staging area: Area between working directory and the repository where the changes that you make are added before the next commit
+		- Commit: Snapshot of the staged changes from a working directory
+		- .gitignore: Allows you to specify files that you do not want to be tracked
+
+	- Git flow
+		- After initializing a new git repository in a working directory (git init) 
+			its files and folders must be added to its staging area (git add [files]) before they can be saved (git commit).
+		- New changes in the working directory must be staged and then committed again. 
+			New branches can be created or users can switch to an existing branch (git checkout) to explore divergant changes, 
+			then eventually combined (git merge).
+		- If a local repository is linked to a remote repository, changes made locally can be copied to the remote location (git push), 
+			and changes in the remote repository can be copied down to the local version (git pull).
