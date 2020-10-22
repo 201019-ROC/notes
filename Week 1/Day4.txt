@@ -1,0 +1,103 @@
+OOP - Object Oriented Programming:
+	- refers to a programming paradigm which relies on classes and objects to promote code reusability
+	- 4 pillars of OOP:
+		- Encapsulation
+		- Inheritance
+		- Polymorphism
+		- Abstraction
+
+Encapsulation in Java:
+	- refers to the ability of an object to hide its data and its methods
+	- Encapsulation can be achieved by definining the accessbility of class members using access modifiers
+	- Getter and Setter methods are used to retrieve/change variables/states.
+		- We can add logic to setters in order to ensure valid value
+
+Inheritance in Java:
+	- refers to the ability to adopt states and behaviors from a super/parent class
+	- Deriving subclasses from a super class allows for code reusability and more efficient development
+	- In Java inheritance is shown using the keyword "extends".
+	- By default every class extends the Object class
+		- As result every class inherits the Object class' methods (ie: toString(), hashcode(), equals()...)
+	- By default, the first line of every contructor is a call to its parent's constructor: super();
+	- Java does not support multiple inheritance (for classes)
+		- ie: a class cannot extend multiple classes - diamond problem.
+
+Polymorphism in Java:
+	- refers to the ability for objects and methods to adapt their behaviors in different scenarios
+	- Can occur at compile time or at runtime
+	- Method Overriding:	
+		- creating a method in a subclass with the same method signature as the method in its parent class but with a different implementation
+		- ie: Overriding the toString() or the equals method from the Object
+		- Runtime polymorphism
+	- Method Overloading:
+		- creating multiple methods in the same class with the same method name but with a different number and/or type of parameters
+		- Compile time polymorphism
+	- Upcasting/Downcasting:
+		- Upcasting refers to instantiating/assigning an object by declaring its parent's reference type
+			- Animal b = new Bird();
+			- This restricts the methods available to the ones present in the Animal class, however when a method is called, the implemention of the child class is invoked.
+		- Downcasting refers to instantiating/assigning an object by declaring its child class reference type
+			- Dinosaur d = (Dinosaur) a; - have to explicitly cast
+			- This allows for methods in the Dinosaur class to be accepted by the compiler, however this can lead do issues during runtime.
+
+Abstraction in Java:
+	- refers to focusing on functionality rather than implementation details
+		- for example, using methods in utility classes without actually knowing how it's implemented.
+	- Abstract classes and Interfaces incorporate Abstraction into Java.
+	- Abstract classes are like templates that can have parts left to be implemented.
+		- A class is made abstract by adding the abstract keyword into its class declaration
+		- An abstract class does not need to contain abstract methods, but a class with abstract methods has to be abstract
+			- Abstract methods are unimplemented methods left for subclasses to implement
+				- [access modifier] abstract [returnType] [methodName] ([argument1Datatype] [argument1] [...]);
+		- An abstract class CANNOT be instantiated
+		- A class can only extend one class (abstract or not) 
+	- Interfaces define specific behavior(s) for classes to implement
+		- contract like
+		- Interfaces are declared as "interface" instead of a class
+		- Convention dictate that interfaces should end with -able
+		- All methods declared within an interface is implicitely abstract
+		- As of Java 8, interfaces can now provide a default implementation of a method using the "default" keyword
+			- [access modifier] default [returnType] [methodName] ([argument1Datatype] [argument1] [...]) {implementation here}
+			- This helps prevent existing applications from running into issues when methods are added to a pre-existing interface
+			- introduces the diamond problem
+		- All variables in interfaces are public static final - implicitely done if not typed
+		- A class can implement as many interfaces as wanted
+		- An interface can EXTEND multiple interfaces
+		- Interfaces with no declared methods are referred to as Marker interfaces
+			- Mainly used to provide information to the compiler and the JVM about the object
+		- Interfaces with only one abstract method declared, those are referred as Functional interfaces
+			 -To be used with Lambda expressions - To be discussed later
+
+
+Datastructures:
+	- Solutions to work with data
+
+Collection:
+	- Collection is an interface that can be considered the "super" interface from which every List/Set/Queue comes from.
+		- Declares the methods that are going to be implemented by all collections.
+			- add();
+			- remove();
+			- contains;
+			- size();
+			- isEmpty();
+			[...]
+		- Only work with objects (which includes Wrapper classes)
+		- Collection interface is not not to be confused with Collection's' class
+			- Collections is a utility class that provides static methods to work with Collection
+		- Iterable: Allows an object to be the target of a for-each loop.
+	- List
+		- List is an interface that extends Collection. Lists are collections that can hold duplicate values.
+			- ArrayList:
+				- Dynamically sized array in which elements can be added and removed.
+				- ArrayList leverage indexes, which makes more efficient for retrieval operations.
+			- LinkedList:
+				- Consists of a series of nodes which store data and a reference to the next node.
+				- LinkedList are better for insertion and deletion
+	- Set
+		- Set is an interface that extends Collection. Sets are collections that cannot hold duplicate values.
+			- HashSet:
+				- backed by a hashtable
+				- Hashmap in which the "value" is just a dummy object
+				- unordered
+
+
