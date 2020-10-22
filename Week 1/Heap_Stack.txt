@@ -1,0 +1,30 @@
+Java memory management - Stack/Heap
+
+One of the main features of Java is its automatic memory management.
+
+Stack
+	- Stores local variable in a call stack
+		- Different scopes allow for different variable
+			- Variables "pop" off once the scope is over
+	- LIFO - Meaning Last In First Out
+	- Also stores reference variables
+	- One stack per thread
+
+Heap
+	- Stores Objects
+		- Once an object is no longer referenced it becomes eligible for garbage collection
+	- Shared across threads
+	- Contains the String Pool
+
+Garbage collection
+	- Happens in the background
+	- Daemon thread handles object removal
+		- the finalize method is executed before an object is destroyed
+	- System.gc()
+		- Suggests garbage collection
+		- Garbage collection cannot be forced
+
+Pass by Value
+	- Java is a pass by value language, as such passing a variable into a method uses the value of the variable instead of the variable itself.
+		- for primitives
+	- Passing a reference variable passes the reference value to the location in the heap, as such changes made to the object are persited
