@@ -99,5 +99,17 @@ Collection:
 				- backed by a hashtable
 				- Hashmap in which the "value" is just a dummy object
 				- unordered
+			- TreeSet
+				- Ordered - Natural order
+					- specify a "natural order" using Comparator/Comparable.
+	- Queue
+		- Queue is an interface that extends Collection. Queue are collections that follow a FIFO order (First in, First out)
+			- Priority Queue
+			- Linked List
+				- Implements both List and Queue
+	- Maps are not collections in Java because they do not implement the iterable interface. Cannot use for-each loop (directly) on maps
+			- Maps store key, value pair.
+				- HashMap
+				- TreeMap
 
 
