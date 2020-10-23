@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import com.revature.exceptions.AnimalException;
+
 public abstract class Animal {
 
 	private String name;
@@ -45,9 +47,9 @@ public abstract class Animal {
 	public int getNumOfLegs() {
 		return numOfLegs;
 	}
-	public void setNumOfLegs(int numOfLegs) {
+	public void setNumOfLegs(int numOfLegs) throws AnimalException{
 		if(numOfLegs < 0) {
-			System.out.println("Invalid number of legs.");
+			throw new AnimalException("Animals can't have negative legs!");
 		} else{
 			this.numOfLegs = numOfLegs;
 		}

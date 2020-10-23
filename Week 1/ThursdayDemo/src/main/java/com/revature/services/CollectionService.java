@@ -101,4 +101,21 @@ public class CollectionService {
 			System.out.println(hm.get(i));
 		}
 	}
+	
+	public void rawTypes() {
+		List<Integer> al = new ArrayList<>();
+		List al1 = new ArrayList<>();
+		al.add(1);
+		al.add(1);
+		al.add(5);
+		al.add(2);
+		al.add(15);
+		al.add(-5);
+		al1.add("Hello");
+		// al.add("String");
+		
+		al.addAll(al1);
+		
+		System.out.println(al);
+	}
 }
