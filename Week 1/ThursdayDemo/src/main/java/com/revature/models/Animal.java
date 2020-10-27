@@ -1,5 +1,8 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import com.revature.exceptions.AnimalException;
 
 public abstract class Animal {
@@ -44,9 +47,19 @@ public abstract class Animal {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getNumOfLegs() {
 		return numOfLegs;
 	}
+	
+	public ArrayList<Integer> smallerList(ArrayList<Integer> sm) {
+		return sm;
+	}
+	
+	public LinkedList<Integer> smallerList(LinkedList<Integer> sm) {
+		return sm;
+	}
+	
 	public void setNumOfLegs(int numOfLegs) throws AnimalException{
 		if(numOfLegs < 0) {
 			throw new AnimalException("Animals can't have negative legs!");

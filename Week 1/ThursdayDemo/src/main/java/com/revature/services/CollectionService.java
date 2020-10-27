@@ -34,7 +34,7 @@ public class CollectionService {
 //		al1.add(true);
 //		System.out.println(al1);
 		
-		for(Integer i:al) {
+		for(Integer i : al) {
 			System.out.println(i);
 		}
 		

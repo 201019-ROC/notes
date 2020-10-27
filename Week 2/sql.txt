@@ -1,0 +1,160 @@
+Database
+	- Collection of related data
+	- Allow for preservation of information past the lifetime of an application
+
+DBMS
+	- Database management systems
+	- Collections of programs that are used to create and maintain a database
+		- Stores the data in a structure format
+		- Allow for concurrent use of data (many users can interact with our database at the same time)
+		- Control the access to the data
+		- Maintain data integrity (consistency and accuracy of the data)
+		- Data backup and recovery
+	- Many forms of DBMS, we will focus on RDBMS - Relational Database Management System
+		- Consists of a collection of tables where the tables are connected and reference one another
+			- Tables can contain:
+				- Columns
+					- Categories of data - also referred as fields
+					- Same type of information
+				- Rows
+					- Particular instances of that data category - also refered as records
+					- Data entries, would correspond to our Java objects
+
+SQL
+	- Structured Query Language
+		- provides a means for us to interact with our database entities
+	- SQL Implementations
+		- different "flavors" of SQL, arising from the different vendors and platforms available
+			- Syntax may vary between implementations
+			- ie: OracleSQL, MySQL, NoSQL (non relational)
+			- We will focusing on PostgreSQL
+
+			
+Important distinction
+	- PostgreSQL is the RDBMS itself
+	- DBeaver is just a tool that allows us to easily visualize and interact with our database entities
+
+Database schema
+	- a collection of database objects including tables, views, triggers, and stored procedures
+	- associated with a user known as the 'schema owner'
+	- always belongs to one database
+		- database may have multiple schema 
+
+Schema example:
+https://database.guide/wp-content/uploads/2016/06/sakila_full_database_schema_diagram.png
+
+PostgreSQL
+	- free and open-source
+		- supports PL/pgSQL (Procedural Language/PostgreSQL)
+			- Procedural programming language
+			- Allows for more complex operations and computations than SQL
+	- Datatypes (more are available at: https://www.postgresql.org/docs/10/datatype.html)
+		- Character types
+			- CHAR
+				- fixed-length, blank padded
+			- VARCHAR
+				- variable-length with limit
+			- TEXT
+				- variable-length with no limit
+		- Numeric types
+			- INTEGER
+				- 4 bytes
+			- DECIMAL
+				- user-specified precision
+			- SMALLINT
+				- 2 bytes
+			- BIG INT
+				- 8 bytes
+		- Temporal types
+			- DATE
+				- date/no time of the day
+			- TIME
+				- Time of the day with no date
+			- TIMESTAMP
+				- date and the time of day
+		- Autoincrementing integer
+			- SERIAL
+
+SQL Sublanguages
+	- represent the different types of operations that may be performed on our database entities
+	- for the sake of this training, there are 5 SQL sublanguages
+	- DDL, DCL, DML, DQL, TCL
+		- DCL
+			- Data Control Language
+				- Manages user permission/access within the database
+					- define power/access to tables/schema
+				- GRANT/REVOKE
+		- DDL
+			- Data Definition Language
+				- Statements that are used to construct or modify database/schemas/roles(user)/tables and their properties
+				- CREATE
+				- ALTER
+				- DROP
+				- TRUNCATE
+
+Constraints
+	- used to limit the type of data that goes into a table in order to ensure the accuracy and reliability of the data
+		- Primary Key - Combination of not null and unique - unique identifier for each row in a table
+		- Not null - Ensures that the column cannot have a null value
+		- Unique - ensures that all values in a column are different
+		- Check (condition) - ensures that the condition is met
+		- References - Foreign key, uniquely identifies a row/record in another table
+
+Domain integrity
+	- values fall within the contraints placed on the columns
+	- Make sure the the values have the correct types
+
+Keys
+	- Primary keys
+		- Column or combination of columns which act as a Unique identifier to a record in a table
+			- Composite key
+				- Combination of columns which act as the primary key
+		- Unique and not null
+
+	- Foreign keys
+		- used to illustrate relationships between tables
+			- similar concept to a reference variable that points to a record in another table
+	- Canditate keys
+		- Any columns that can be used to uniquely identify a record in a table
+
+
+
+
+	- DML
+		- Data Manipulation Language
+			- Statements to perform record level operations
+			- CRUD Operations
+				- Create Read Update Delete
+			- INSERT
+				- ie: INSERT INTO table_name (col1_name, col2_name) VALUES (col1_values, col2_values);
+					- mockaroo to generate mockdata
+			- UPDATE
+				- ie: UPDATE table_name SET col_name = col_value WHERE condition;
+			- DELETE
+				- ie: DELETE FROM table_name WHERE condition
+					- if no where clause is provided will delete every record
+
+	- DQL 
+		- Data Query Language
+			- "sub-sub" language/part of DML
+		- Retrieve information from tables
+		- SELECT
+			- main operation used when querying data, can be filter using the WHERE clause
+			- * "Select All"
+			- can specify columns that are wanted
+			- Result set can be further filtered/rearranged using additional clauses
+				- ORDER BY
+					- sorts the result set in an asc/dsc order
+				- LIMIT
+					- limit the result to a specific number of results
+				- OFFSET
+					- specifies number of rows to skip before starting to return rows for the query
+	
+
+Aliases
+	- temporary names for columns or tables that can be applied when querying
+
+Referential integrity
+	- Want database to be working properly within the constraints of our foreign key relationships
+	- Do not want to reference a record that no longer exists
+		- orphaned record

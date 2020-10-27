@@ -67,4 +67,36 @@ public class ExceptionService {
 
 		System.out.println("End of the method.");
 	}
+	
+	public void usingException2(){
+//		Dinosaur d = new Dinosaur();
+//		try {
+//			//Unsafe code goes here
+//			d.setNumOfLegs(-1);
+//			
+//		} catch (AnimalException e) {
+//			//Exception handling code
+//			try {
+//				
+//				d.setNumOfLegs(-5);
+//				
+//			} catch (AnimalException e1) {
+//				// Code doesn't reach here
+//				e1.printStackTrace(); //1
+//				
+//			} catch (Exception e2) {
+//				
+//			}
+//			e.printStackTrace(); //2
+//		} 
+		
+		try {
+			int x = 1/1;
+		} finally {
+			
+		}
+		
+		System.out.println("The end of my program");
+		
+	}
 }

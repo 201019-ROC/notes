@@ -1,5 +1,6 @@
 package com.revature.driver;
 
+import com.revature.exceptions.AnimalException;
 import com.revature.services.CollectionService;
 import com.revature.services.ExceptionService;
 
@@ -23,7 +24,23 @@ public class Driver {
 //		GenericService.printMe(ia);
 //		GenericService.printMe(sa);
 		
-		es.usingException();
+		es.usingException2();
+		
+		
+//		Dinosaur a = new Dinosaur();
+//		Dinosaur b = new Dinosaur();
+//		Dinosaur c = new Dinosaur();
+//		
+//		a.setName("Di");
+//		b.setName("No");
+//		c.setName("Saur");
+//		
+//		Dinosaur[] dinosaurs = {a, b, c};
+//		
+//		for(Dinosaur d : dinosaurs) {
+//			System.out.println("Dinosaur name is: " + d.getName());
+//		}
+//		
 	}
 
 }
