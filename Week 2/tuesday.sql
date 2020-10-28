@@ -92,3 +92,12 @@ select * from users
 	where first_name > 'J';
 --	order by last_name
 --	limit 2 offset 1;
+
+create table friends(
+	friend1 INTEGER references users(id),
+	friend2 INTEGER references users(id),
+	primary key (friend1,friend2)
+);
+
+insert into friends (friend1, friend2) values
+(2,7),(2,8),(3,9),(7,9),(11,10);

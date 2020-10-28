@@ -1,0 +1,133 @@
+DQL
+	- Data Query Language - Select
+		- Used to retrieve information from tables
+		SELECT (columns/*) FROM table_name
+		WHERE: condition, ie: id = 1;
+		GROUP BY: used with aggregate functions
+				- ie: SELECT col1, COUNT(col2) FROM table_name GROUP BY col1;
+		HAVING: used with aggregate functions to specify a condition
+				- ie: SELECT col1, COUNT(col2) FROM table_name GROUP BY col1 HAVING col2 = value;
+		ORDER BY: allows to select a column to sort the data by, can specify ascending or descending
+	- Nest sub-queries
+		- using an inner query within a WHERE or HAVING clause to provide a calue or result set for filtering
+			- ie: SELECT FROM table_name WHERE CONDITION = (SELECT FROM... );
+
+Aggregate and Scalar functions
+	- Functions are methods used perform operations on data
+	- Aggregate functions
+		- operate on a set of values
+			- sum, count, avg, min, max
+	- Scalar functions
+		- operate on a single input value
+			- lower, upper, substring, reverse
+
+Multiplicity
+	- Refering to the relationship between tables
+	- one-to-one
+		- exactly one row in one table references one row in another
+			- ie: One SN is assigned to one person and one person only has one SN 
+	- one-to-many/many-to-one
+		- Exactly one row in a table is referenced by potentially many rows in another table
+			- ie: a customer may place many orders, but each order belong to only one customer  
+	- many-to-many 
+		- several rows in one table can reference several rows in another table.
+		- A junction table is created in order to work with those/make it easier to work with
+			- ie: friends can have many friends.
+
+Set operations
+	- Operations to combine the ROWS of two different result sets
+		- to not be confused with joins
+	- UNION
+		- combine SELECT queries results with no duplicates
+	- UNION ALL
+		- combining SELECT queries result with duplicates
+			- faster, because not checking for duplicates
+	- INTERSECT
+		- returns the common records from both data set
+	- EXCEPT
+		- returns a data set where the second query results are removed from the first
+
+Normalization
+	- refers to a database design technique which reduces data redundancy and ensures that data is stored logically
+	- consists in dividing larger tables into smaller tables and linking them using relationships
+		- We are going to focus on the first 3NF(normal forms)
+			- a database is considered sufficiently normalized after 3NF
+			- 1NF
+				- each table should have a primary key
+				- tables should be comprised of atomic values
+					- should not be able to break it down into smaller pieces
+				- no repeated columns (columns for the same purpose)
+			- 2NF
+				- must be in 1NF
+				- no partial dependencies
+					- removing values that only depend on one part of a composite key
+			- 3NF
+				- must be in 2 NF
+				- no transitive dependencies
+					- ie: fields that can be determined based of other fields
+
+Joins
+	- way to combine rows from different tables based on some logical relationship (columns)
+	- Types of joins:
+		- Inner join/Join: Returns records that have matching values in both tables
+		- Left (Outer) join: Returns all records from the left table and the matched records from the right table
+		- Right (Outer) join: Returns all records from the right table and the matched records from the left table
+		- Full (Outer) join: Returns all the records when there is a match in either left or right table
+		- Self join: join a table with itself to combine related data from the same table
+
+User defined functions
+	- can be used to define more specific operations to be performs on a database
+	- we're going to be using PL/pgSQL
+		- Procedural programming language
+	
+	- syntax:
+		create (or replace) function [function name] ([params])
+		returns [type] (void)
+		language [lang]
+		as $$
+		declare
+			- any variables to be used
+			- optional block
+		begin
+			-- function code
+		end
+		$$
+
+
+Normalization example:
+
+no NF:
+
+						SalesStaff
+EmployeeID | SalesPerson | SalesOffice(street, city, state, zip)| Age | DOB | Customer1 | Customer2 | Customer3
+
+1NF:
+
+						SalesStaff
+EmployeeID | SalesPersonName | SalesOfficeStreet | SalesOfficeCity | SalesOfficeState | SalesOfficeZip| Age | DOB 
+
+						Customer
+				CustomerID | CustomerName | EmployeeID
+
+
+2NF:
+
+						SalesOffice
+			SalesOfficeID | SalesOfficeStreet | SalesOfficeCity | SalesOfficeState | SalesOfficeZip
+
+						SalesStaff
+				EmployeeID | SalesPersonName | Age | DOB 
+
+						Customer
+				CustomerID | CustomerName | EmployeeID
+
+
+3NF:
+						SalesOffice
+			SalesOfficeID | SalesOfficeStreet | SalesOfficeZip
+
+						SalesStaff
+				EmployeeID | SalesPersonName | DOB 
+
+						Customer
+				CustomerID | CustomerName | EmployeeID
