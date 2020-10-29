@@ -93,14 +93,14 @@ select add(4,5);
 
 drop function add;
 
-create or replace function increase_budget(increase_amount departments.monthly_budget%type, dept_id_input departments.dept_id%type)
+create or replace function increase_budget(increase_amount company.departments.monthly_budget%type, dept_id_input company.departments.dept_id%type)
 returns void
 language plpgsql
 as $$
 begin 
-	update departments 
+	update company.departments 
 	set monthly_budget = monthly_budget + increase_amount
-	where dept_id =dept_id_input;
+	where dept_id = dept_id_input;
 end
 $$
 

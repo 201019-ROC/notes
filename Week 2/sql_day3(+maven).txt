@@ -132,4 +132,41 @@ Dependency management:
 		</dependency>
 	</dependencies>
 	- Local Repository:
-		- all the dependencies are downloaded in the .m2 folder 
+		- all the dependencies are downloaded in the .m2 folder
+
+JDBC
+	- stands for Java Database Connectivity
+	- establishes a connection between a Java application and a database
+		- dependency is database specific
+			- Postgres: https://mvnrepository.com/artifact/org.postgresql/postgresql/
+	- Important JDBC Classes/Interfaces:
+		- DriverManager: manages the JDBC drivers
+			- getConnection()
+				- credentials can be hardcoded, stored in a file, or stored in environment variables 
+		- Connection: represents the connection to the database
+			- setAutoCommit(boolean)
+			- createStatement()
+			- commit()
+			- rollback()
+			- close()
+		- Statements: represent a SQL statement
+			- best used with statements that require no user input due to vulnerability to SQL Injection
+			- executeQuery(sql)
+		- PreparedStatements: represent SQL statements that have been pre-processed before their execution and therefore prevent SQL injection 
+			- setInt()
+			- setString()
+			- executeUpdate()
+		- CallableStatement: call functions defined within the database
+		- ResultSets: represent the results of a query. 
+			- next()
+				- pointer starts before the first result
+			- getInt(colName..) 
+	- SQL Injection:
+		- code injection technique that is aimed at the database
+		- placement of malicious code in SQL statements
+			- SELECT * FROM users WHERE id = " ";
+				- " 1; DROP TABLE users;"		
+	- DAO design pattern
+		- Data Access Object: Having one layer that handles all of the persistence methods for the database
+		- Leveraging interfaces to declare behaviors to easily be able to change the implementations for the methods
+			- ie: going from postgres db to oracle db
