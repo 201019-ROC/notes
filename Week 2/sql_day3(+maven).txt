@@ -1,0 +1,135 @@
+TCL: Transaction Control Language
+	- Transactions:
+		- consist in combining multiple database operations into one unit of work
+		- PostgreSQL treats every SQL statement as a being executed within a transaction if not specified explicitly
+			- IF a BEGIN command is not used, a BEGIN statement is implicitely provided and if successful, a COMMIT statement is wrapped around it
+			- Transaction block: refers to multiple statements surrounded by BEGIN and COMMIT.
+	- Relevant statements:
+		- BEGIN
+			- indicates the start of a transaction
+		- SAVEPOINT
+			- saves the current state of the database within that transaction
+		- ROLLBACK [can specify a savepoint to rollback to]
+			- reverts the state of a database to a previous commit or savepoint
+		- COMMIT
+			- Saves the changes to the database
+
+	- Properties of a transaction: ACID
+		- Atomicity
+			- One unit, transaction is completed as a whole or not at all
+		- Consistency
+			- database should be in a valid state before and after the transaction
+				- valid in regards to db contraints
+				- valid in regards to the business logic of the application
+		- Isolation
+			- One transaction shouldn't be able to interfere with another
+			- Result of a transactions executing concurrently should be the same as if they occured subsequently
+		- Durability
+			- Commits are final and the changes made are persisted
+
+	- Transaction Isolation Levels 
+		- Read uncommitted
+			- Able to interact with uncommited data
+		- Read committed
+			- Only ably to interact with data committed BEFORE the query began, we can still "read" data that has not yet been commited
+			- PostgreSQL default setting
+		- Repeatable read
+			- Only sees data committed before the transaction began
+			- Usually permits phantom read - but PostgreSQL (Stricter than other SQL language)
+		- Serializable
+			- Strictest transaction isolation
+			- Emulates serial transaction execution - As if they happened one after the other
+
+		- Stricter/Higher isolation levels slow down transaction execution 
+
+	- Read Phenomena
+		- Dirty read
+			- a transaction reads data written by a concurent uncommited transaction
+		- Nonrepeatable read
+			- a transaction re-reads data it has previously read and finds that that data has been modified by another transaction 
+				that has committed since the inital read
+		- Phantom read
+			- transaction re-executes a query that returns a set of row and finds that the set of row has been modified by another transaction
+				- All the rows in the query have the same value before and after, however different rows are being selected
+
+
+Maven
+	- Dependency manager: downloads depenpendencies declared in the pom.xml and their transitive dependencies
+		- dependencies required by our dependencies in order to function properly
+	- Project management tool: handles the organization of the project and versioning of code
+	- Build automation tool: used to build source code and produce an artifact (.jar, .war...) 
+
+pom.xml
+	- where settings/metadata/information regarding our project is located
+	- in an xml format - uses tags <properties> info </properties>
+	- A basic pom.xml is divided into 4 different parts:
+		- Project information
+			- groupId
+				- often the same as package name inside of application
+				- usually designates business name/app name
+			- artifactId
+				- often the same as the application name
+				- name of the element/artifact to be produced
+			- version
+				- usually sequential
+			- packaging
+				- to distribute your application
+				- .war, .jar
+					- .jar is default
+
+Basic commands of Maven
+	- Goal of Maven is to produce an artifact
+		- clean
+			- "cleaning project"
+			- deleting the target directory and any generated source
+		- compile
+			- compiles source code
+		- package
+			- run compile
+			- runs tests
+			- creates an artifact in the target folder
+		
+		- install
+			- runs package command and install it into the local repository
+		- deploy
+			- runs the install command and deploy to a corporate or remote repository
+
+	- Once a .jar file is created, it can be executed by the JVM using: java -jar [jarFile]
+	- Specify manifest file using maven plugin in pom.xml:
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>[path].[to].[Driver]</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+Dependency management:
+	- To import a dependency a groupId, an artifactName, and a version are required
+	- syntax:
+	<dependencies>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.18</version>
+		</dependency>
+		<dependency>
+			<groupId>com.other</groupId>
+			<artifactId>dependency</artifactId>
+			<version>someversion</version>
+		</dependency>
+	</dependencies>
+	- Local Repository:
+		- all the dependencies are downloaded in the .m2 folder 

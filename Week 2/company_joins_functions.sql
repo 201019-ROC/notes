@@ -127,3 +127,25 @@ $$
 
 select increase_budget2(10000, 1);
 select increase_budget2(10000, 3);
+
+select * from departments;
+
+delete from departments where dept_id = 9;
+
+begin;
+	insert into departments (dept_name, monthly_budget) values ('Something New', 5000);
+	-- update a record
+	insert into departments (dept_name, monthly_budget) values ('Something New1', 500);
+	rollback to mySavepoint;
+commit;
+end;
+
+begin;
+	insert into departments (dept_name, monthly_budget) values ('Something New', 5000);
+	--select that record
+	insert into departments (dept_name, monthly_budget) values ('Something New1', 500);
+	rollback to mySavepoint;
+commit;
+end;
+
+
