@@ -1,0 +1,59 @@
+Client Server Architecture:
+
+Software architecture model between computer systems and server systems
+	- Communicate over a computer network or on the same computer
+
+Internet
+	- Global network of computers acting as clients and servers
+		- Clients make requests to a server and expect a response 
+	- Different transfer protocols are available to exchange information
+		- File Transfer Protocol (FTP), Simple Mail Transfer Protocol (SMTP), Simple Object Access Protocol (SOAP), Hypertext Transfer Protocol (HTTP)
+
+HTTP
+	- Transfer protocol used for information exchange over the world wide web
+	- Consists in Requests and Responses exchanged between a Client and a Server
+	- File types to be transfered: JSON - JavaScript Object Notation/ XML, HTML Pages, plain text... 
+		- HTTP Request
+			- HTTP Version
+				- current: 1 / 1.1
+			- Verb
+				- also known as the HTTP method, describes the operation to be performed
+				- 4 main ones (Similar to CRUD):
+					- Get (Retrieve)
+					- Post (Create)
+					- Put (Update)
+					- Delete (Delete)
+			- URL
+				- Resource location
+			- Header
+				- Metadata about your request
+			- Body
+				- (can be empty)
+				- Information to be included
+		- HTTP Response
+ 			- HTTP Version
+			- Header
+				- Metadata about your response
+			- Body
+				- Payload (if requesting a resource)
+				- can be empty
+			 - Status code
+				- Status of the request
+				- 100 - 500 range
+					- 100s: Informational 
+					- 200s: Succeess
+					- 300s: Redirect
+					- 400s: Client-side error
+					- 500s: Server-side error
+
+Types of client server architecture:
+	- 2-tier architecture
+		- Client/application tier and Database tier
+		- ie: Games, desktop application
+	- 3-tier architecture
+		- Presentation layer, Application Layer, Data Layer
+		- Separation of concerns
+		- ie: any web applications
+	- n-tier architecture
+		- Breaking down the application in additional layer based on logic to decouple different aspects of the application
+		- Can lead to complexity

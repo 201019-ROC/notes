@@ -148,4 +148,5 @@ begin;
 commit;
 end;
 
-
+select * from company.departments where dept_name like 'Acc%';
+select * from company.employees where empl_name like 'A%';
