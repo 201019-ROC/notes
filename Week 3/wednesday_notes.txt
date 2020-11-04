@@ -1,0 +1,53 @@
+Reflection API
+	- enables Java code to examine and manipulate entities programatically
+		- leveraged by frameworks behind the scene
+			- ie: Spring, Hibernate
+	- originates from the java.lang.reflect package
+	- example of some classes available:
+		- Method
+		- Modifier
+		- Field
+		- Construct
+
+Unit Testing
+	- refers to breaking down an application to its smallest "unit" for testing: methods
+	- consists in ensuring that our methods behave as expected by checking their outputs given specific inputs
+		- regression testing: making sure that previous functionality still works as new code is written
+	- unit tests should be testing a method without testing its dependencies
+
+Test Driven Development (TDD)
+	- refers to writing unit tests first to ensure that a feature pass certain criteria and developing code to pass the tests.
+
+JUnit
+	- Java Unit Testing Framework
+		- We will be using JUnit4
+	- leverages assert methods to check for a particular condition to determine if a test passes
+		- a test passes if the result obtained is the result expected
+			- ie: an exception being thrown might be the desired behavior
+		- assert methods examples: https://junit.org/junit4/javadoc/4.8/org/junit/package-summary.html
+			- assertEquals
+			- assertArrayEquals
+			- assertNotNull
+			- assertTrue/False
+		- note: it is good practice to only have one assert statement per test.
+
+	- JUnit Annotations:
+		- @Test
+		- @BeforeClass
+		- @Before
+		- @After
+		- @AfterClass
+		- @Ignore
+
+	- Testing for an exception:
+		- @Test(expected = ExceptionName.class)
+		- @Rule, Expected Exception
+			- expectedException.expect(ExceptionName.class)
+
+h2 database
+	- in memory database mainly used for developing and testing
+		- prevents interaction with production environment for development/testing
+
+Mockito
+	- Java Mocking Framework for Unit Testing
+	- "mock" dependencies in order to truly isolate certain methods
