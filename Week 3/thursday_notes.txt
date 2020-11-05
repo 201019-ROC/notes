@@ -1,0 +1,56 @@
+Threads
+
+Multithreading
+	- refers to dealing with applications with concurrent sub-processes
+		- these sub-processes/path of executions are referred to as threads
+	- types of threads
+		- User threads
+			- JVM ensures their execution to completion before exiting the application
+			- ie: main thread (from main method)
+		- Daemon threads
+			- "optional"
+			- lower priority
+			- run in the background
+			- ie: gc
+		- Each thread gets its own stack but they all share the heap
+
+Creating and running Threads
+	- extending the Thread Class
+	- implementing the Runnable interface
+		- prefered 
+	- override the run() method
+		- specifies the behavior for a thread
+	- instantiate the Thread object and invoke start() method
+
+
+States of a Thread
+	- New
+		- created thread object, run() has not been invoked yet
+	- Runnable
+		- run() has been invoked and is executing
+	- Blocked
+		- waiting for another thread to be done accessing a resource on which a lock has been placed on
+		- Synchronization dependent
+			- prevents more than one thread to access a method at a time
+				- synchronized keyword
+	- Waiting
+		- wait()
+			- Thread would be waiting until notify()/notifyAll() is called
+		- join()
+			- stops the execution of a thread until the thread being called is not executing
+	- Timed-Waiting
+		- sleep(certain amount of time)
+	- Terminated
+		- Everything has been executed in the method, natural end
+
+Lambda Expressions
+	- allow for the compact expression of instances of single-method classes
+		- to implement a functional interface (since they only have one method declared) without requiring a whole class to do do
+			- Runnable interface (run() method)
+	- syntax:
+		- [InterfaceName] [objName] = () -> [returnValue];
+		- [InterfaceName] [objName] = ([params]) -> [returnValue];
+		- [InterfaceName] [objName] = ([params]) -> {
+			// code
+			[returnValue];
+		};
