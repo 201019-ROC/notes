@@ -1,0 +1,38 @@
+Introduction Log4J2
+	- Java Logging Framework, successor to Log4J
+	- Logging consists in capturing and persisting information regarding the state of an application, making it available for analysis at a later time
+	- Setting up Log4J2
+		- defining the logging configuration in log4j2.[xml/ properties/ json/ yaml] file which located in the resource folder
+
+	- Main components:
+		- Loggers:
+			- responsible for recording log events and forwarding them to the appropriate appender(s)
+			- A root logger is provided by default - getRootLogger()
+				- Class specific loggers which can be defined to achieve more granular control over class specific logging - getLogger([ClassName].class)
+		- Appenders:
+			- responsible for delivering the log events to their target destination
+			- formatting of the event is delegated to a layout
+		- Layouts:
+			- responsible for returning a byte array to be turned into a String using the appriopriate charset
+			- more information on patterns available on the log4j2 website:
+				- https://logging.apache.org/log4j/2.x/manual/layouts.html
+
+	- Logging levels
+		- TRACE
+			- debug message, used to capture the flow through the application
+			- ie: identifying part of a method for debugging
+		- DEBUG
+			- identify general debugging event
+			- ie: information helpful for others regarding a debugging diagnostic
+		- INFO
+			- identify event for general purpose
+			- ie: app connected to db
+		- WARNING
+			- identify event that might lead to an error
+			- ie: re-running a method after failure, missing some data
+		- ERROR
+			- identify error in the application, possibly recoverable
+			- ie: database operation is failing, but application can still run
+		- FATAL
+			- identify a severe error that prevens the application from continuing
+			- ie: application cannot continue to execute
